@@ -17,7 +17,7 @@ class Data(object):
         return self.uid > other.uid
 
     def __str__(self):
-        return self.uid
+        return f"{self.email},{self.gender},{self.uid},{self.birthday.strftime('%Y-%m-%d')},{self.height}.{self.weight}"
 
     def __repr__(self):
         return self.uid
