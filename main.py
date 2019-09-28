@@ -4,7 +4,6 @@ from datetime import date
 from data_struct import Data
 import argparse
 
-
 def main(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('-a',
@@ -27,11 +26,9 @@ def main(args):
     exec(f"{args.algoritmo}(datas)")
     tempo_gasto = time() - start
 
-    """
     arq_output = open(args.output_file, "w")
     arq_output.write("email,gender,uid,birthdate,height,weight")
     arq_output.writelines([str(data)+"\n" for data in datas])
-    """
 
     print(tempo_gasto)
 
