@@ -10,7 +10,7 @@ def is_sorted(a: list) -> bool:
     return True
 
 
-def insert_sort(a: list):
+def insert_sort(a: list) -> None:
     for i in range(1, len(a)):
         v = a[i]
         j = i - 1
@@ -22,23 +22,19 @@ def insert_sort(a: list):
         a[j+1] = v
 
 
-def selection_sort(a: list):
-    def swap(a: list, i: int, j: int):
-        aux = a[i]
-        a[i] = a[j]
-        a[j] = aux
-
+def selection_sort(a: list) -> None:
     for i in range(len(a)):
         pos_menor = i
         for j in range(i+1, len(a)):
             if a[pos_menor] > a[j]:
                 pos_menor = j
 
-        swap(a, i, pos_menor)
+        a[i], a[pos_menor] = a[pos_menor], a[i]
 
 
-def merge_sort(a: list, p: int, r: int) -> None:
-    def merge(a: list, p: int, q: int, r: int) -> None:
+def merge_sort(a: list) -> None:
+
+    def merge(p: int, q: int, r: int) -> None:
         n1 = q - p + 1
         n2 = r - q
 
@@ -55,8 +51,35 @@ def merge_sort(a: list, p: int, r: int) -> None:
                 a[k] = a2[j]
                 j += 1
 
-    if r - p > 1:
-        q = (r + p) // 2
-        merge_sort(a, p, q)
-        merge_sort(a, q, r)
-        merge(a, p, q, r)
+    def _merge_sort(p: int, r: int) -> None:
+        if r - p > 1:
+            q = (r + p) // 2
+            _merge_sort(p, q)
+            _merge_sort(q, r)
+            merge(p, q, r)
+
+    _merge_sort(0, len(a))
+
+
+def quick_sort(a: list) -> None:
+    def partition(p: int, r: int) -> int:
+        pivot = a[r - 1]
+        i = p
+
+        for j in range(p, r):
+            if pivot > a[j]:
+                a[i], a[j] = a[j], a[i]
+                i += 1
+
+        if a[i] > pivot:
+            a[i], a[r - 1] = a[r - 1], a[i]
+
+        return i+1
+
+    def _quick_sort(p: int, r: int) -> None:
+        if r - p > 1:
+            pivot = partition(p, r)
+            _quick_sort(p, pivot-1)
+            _quick_sort(pivot, r)
+
+    _quick_sort(0, len(a))
