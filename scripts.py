@@ -15,7 +15,7 @@ def lenght_arqs():
 def test():
     algoritmos = ["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort"]
     arqs = os.listdir("trab2-data")
-    arqs.sort()
+    arqs.sort(key=lambda x: (x[8], x[5]))
 
     for algoritmo in algoritmos:
         if not os.path.exists(f"testes/{algoritmo}"):
@@ -26,6 +26,9 @@ def test():
 
         try:
             for arq in arqs:
+                if os.path.exists(f"testes/{algoritmo}/{arq}"):
+                    continue
+
                 arq_teste = open(f"testes/{algoritmo}/{arq}", "w")
                 print(f"{algoritmo} - {arq}")
 
@@ -34,6 +37,7 @@ def test():
 
                     tempo = func_timeout(400 * 10, main, args=(["-a", algoritmo, "-i", f"trab2-data/{arq}", "-o", f"trab2-output/{algoritmo}/{arq}"],))
                     arq_teste.write(f"{num_exec+1};{tempo}\n")
+                    arq_teste.flush()
                     tempos.append(tempo)
 
                 arq_teste.write(f"\nMédia,{sum(tempos) / len(tempos)}")
