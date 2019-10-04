@@ -131,7 +131,39 @@ def heap_sort(a: list) -> None:
         a[0], a[tamanho] = a[tamanho], a[0]
         heapify(0)
 
-#a = [9, 7, 5, 3, 1, 8, 6, 4, 2]
+
+def tim_sort(a: list) -> None:
+    """
+    TimSort é um algoritmo que utiliza o Insertion Sort e o Merge Sort em conjunto
+    """
+
+    """
+    O tamanho de divisão do array dá melhores resultados entre 32 e 64 (numeros que são potência de 2)
+    """
+    split_size_insertion = 32 
+    for i in range(0, len(a), split_size_insertion):
+        interval = a[i : i + split_size_insertion]
+        insertion_sort(interval)
+        a[i : i + split_size_insertion] = interval
+    # end for
+
+    split_size_merge = split_size_insertion
+    while split_size_merge < len(a):
+        for i in range(0, len(a), split_size_merge * 2):
+            interval = a[i : i + (2 * split_size_merge)]
+            merge_sort(interval)
+            a[i : i + (2 * split_size_merge)] = interval
+        # end for
+        split_size_merge = split_size_merge * 2
+    # end while
+# end tim_sort()
+
+
+# a = [randint(0, 2000) for iter in range(64)]
+# print(a)
+# tim_sort(a)
+# print(is_sorted(a))
 #a = [randint(0, 100000) for i in range(100)]
 #heap_sort(a)
+
 #print(is_sorted(a))

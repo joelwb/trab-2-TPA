@@ -1,4 +1,4 @@
-from algoritmos import merge_sort, insertion_sort, selection_sort, quick_sort, heap_sort, intro_sort, is_sorted
+from algoritmos import merge_sort, insertion_sort, selection_sort, quick_sort, heap_sort, intro_sort, tim_sort, is_sorted
 from time import time
 from datetime import date
 from data_struct import Data
@@ -11,6 +11,7 @@ algoritmos = {
     "heap_sort": "heapsort",
     "insertion_sort": "insertsort",
     "selection_sort": "selectsort",
+    "tim_sort": "timsort",
     "intro_sort": "introsort"
 }
 
@@ -18,7 +19,7 @@ algoritmos = {
 def main(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('-a',
-                        choices=["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort", "intro_sort"],
+                        choices=["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort", "intro_sort","tim_sort"],
                         required=True,
                         dest="algoritmo",
                         help="Algoritmo a ser usado")
@@ -38,11 +39,12 @@ def main(args):
     tempo_gasto = time() - start
 
     arq_output = open(args.output_file, "w")
-    arq_output.write("email,gender,uid,birthdate,height,weight")
+    arq_output.write("email,gender,uid,birthdate,height,weight\n")
     arq_output.writelines([str(data)+"\n" for data in datas])
 
     print(f"{algoritmos[args.algoritmo]}\t{len(datas)}\t{tempo_gasto*1000}")
     return tempo_gasto
+
 
 if __name__ == '__main__':
     main(sys.argv[1:])
