@@ -13,8 +13,8 @@ def lenght_arqs():
 
 
 def test():
-    #algoritmos = ["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort", "intro_sort"]
-    algoritmos = ["intro_sort"]
+    #algoritmos = ["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort", "intro_sort", "tim_sort"]
+    algoritmos = ["tim_sort"]
     arqs = os.listdir("trab2-data")
     arqs.sort(key=lambda x: (x[8], x[5]))
 

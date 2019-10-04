@@ -38,11 +38,15 @@ def main(args):
     exec(f"{args.algoritmo}(datas)")
     tempo_gasto = time() - start
 
+
+    """
     arq_output = open(args.output_file, "w")
     arq_output.write("email,gender,uid,birthdate,height,weight\n")
     arq_output.writelines([str(data)+"\n" for data in datas])
+    """
 
     print(f"{algoritmos[args.algoritmo]}\t{len(datas)}\t{tempo_gasto*1000}")
+    print(is_sorted(datas))
     return tempo_gasto
 
 
