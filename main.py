@@ -1,4 +1,4 @@
-from algoritmos import merge_sort, insertion_sort, selection_sort, quick_sort, heap_sort, is_sorted
+from algoritmos import merge_sort, insertion_sort, selection_sort, quick_sort, heap_sort, intro_sort, is_sorted
 from time import time
 from datetime import date
 from data_struct import Data
@@ -10,13 +10,15 @@ algoritmos = {
     "merge_sort": "mergesort",
     "heap_sort": "heapsort",
     "insertion_sort": "insertsort",
-    "selection_sort": "selectsort"
+    "selection_sort": "selectsort",
+    "intro_sort": "introsort"
 }
+
 
 def main(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('-a',
-                        choices=["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort"],
+                        choices=["quick_sort", "merge_sort", "heap_sort", "insertion_sort", "selection_sort", "intro_sort"],
                         required=True,
                         dest="algoritmo",
                         help="Algoritmo a ser usado")
@@ -42,6 +44,7 @@ def main(args):
     print(f"{algoritmos[args.algoritmo]}\t{len(datas)}\t{tempo_gasto*1000}")
     return tempo_gasto
 
-
 if __name__ == '__main__':
     main(sys.argv[1:])
+
+#main(["-a", "quick_sort","-i","trab2-data/data_75e5.csv", "-o", "75e5.csv"])
