@@ -167,22 +167,22 @@ def tim_sort(a: list) -> None:
     """
     split_size_insertion = 32
     for i in range(0, len(a), split_size_insertion):
-        interval = a[i : i + split_size_insertion]
+        interval = a[i: i + split_size_insertion]
         insertion_sort(interval)
-        a[i : i + split_size_insertion] = interval
+        a[i: i + split_size_insertion] = interval
     # end for
 
     split_size_merge = split_size_insertion
     while split_size_merge < len(a):
         for i in range(0, len(a), split_size_merge * 2):
-            interval = a[i : i + (2 * split_size_merge)]
+            interval = a[i: i + (2 * split_size_merge)]
             merge_sort(interval)
-            a[i : i + (2 * split_size_merge)] = interval
+            a[i: i + (2 * split_size_merge)] = interval
         # end for
         split_size_merge = split_size_merge * 2
 
 
 # a = [9, 7, 5, 3, 1, 8, 6, 4, 2]
-# a = [randint(0, 10000000) for i in range(1000)]
-# tim_sort(a)
+# a = [randint(0, 10000000) for i in range(10000)]
+# intro_sort(a)
 # print(is_sorted(a))

@@ -5,6 +5,7 @@ from data_struct import Data
 import argparse
 import sys
 
+
 algoritmos = {
     "quick_sort": "quicksort",
     "merge_sort": "mergesort",
@@ -38,19 +39,15 @@ def main(args):
     exec(f"{args.algoritmo}(datas)")
     tempo_gasto = time() - start
 
-
-    """
     arq_output = open(args.output_file, "w")
     arq_output.write("email,gender,uid,birthdate,height,weight\n")
     arq_output.writelines([str(data)+"\n" for data in datas])
-    """
 
     print(f"{algoritmos[args.algoritmo]}\t{len(datas)}\t{tempo_gasto*1000}")
-    print(is_sorted(datas))
     return tempo_gasto
 
 
 if __name__ == '__main__':
     main(sys.argv[1:])
 
-#main(["-a", "quick_sort","-i","trab2-data/data_75e5.csv", "-o", "75e5.csv"])
+#main(["-a", "intro_sort","-i","trab2-data/data_75e4.csv", "-o", "75e5.csv"])
