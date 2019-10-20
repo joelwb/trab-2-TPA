@@ -52,6 +52,16 @@ def test():
 def create_csv_and_graphics_with_media():
     algs = os.listdir("testes")
 
+    alg_color = {
+        "quick_sort": "black",
+        "merge_sort": "olive",
+        "insertion_sort": "blue",
+        "selection_sort": "red",
+        "heap_sort": "magenta",
+        "tim_sort": "green",
+        "intro_sort": "aqua"
+    }
+
     tamanho_arq = [10, 25, 50, 75]
     tamanho_arq += [tam * (10 ** i) for i in range(1, 6) for tam in tamanho_arq]
 
@@ -84,7 +94,7 @@ def create_csv_and_graphics_with_media():
         plt.title(alg)
         plt.ticklabel_format(axis="x", style="sci", scilimits=(0, 0))
         plt.subplots_adjust(bottom=0.15)
-        plt.plot(tamanho_arq[:len(medias)], medias)
+        plt.plot(tamanho_arq[:len(medias)], medias, color=alg_color[alg])
         plt.savefig(f"csv_graphics_media/{alg}.png")
         plt.clf()
 
@@ -97,7 +107,7 @@ def create_csv_and_graphics_with_media():
         plt.xticks([0, 50000, 100000, 250000, 500000], rotation='vertical')
         plt.ticklabel_format(axis="x", style="sci", scilimits=(0, 0))
         plt.xlim(0, 500000)
-        plt.plot(tamanho_arq[:len(medias)], medias, label=alg)
+        plt.plot(tamanho_arq[:len(medias)], medias, label=alg, color=alg_color[alg])
         plt.legend()
         plt.savefig("csv_graphics_media/all_reduced.png")
 
@@ -107,7 +117,7 @@ def create_csv_and_graphics_with_media():
         plt.title("Todos Algoritmos")
         plt.xticks([0, 100000, 500000, 1000000, 2500000, 5000000, 7500000], rotation='vertical')
         plt.ticklabel_format(axis="x", style="sci", scilimits=(0, 0))
-        plt.plot(tamanho_arq[:len(medias)], medias, label=alg)
+        plt.plot(tamanho_arq[:len(medias)], medias, label=alg, color=alg_color[alg])
         plt.savefig("csv_graphics_media/all.png")
 
 
