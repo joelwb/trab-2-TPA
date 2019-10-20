@@ -59,7 +59,7 @@ def create_csv_and_graphics_with_media():
 
     for alg in algs:
         arq_saida = open(f"csv_graphics_media/{alg}.csv", "w")
-        arq_saida.write("n,Média,Mínimo,Máximo\n")
+        arq_saida.write("n,Media,Minimo,Maximo\n")
         arqs = os.listdir(f"testes/{alg}")
         arqs.sort(key=lambda x: (x[8], x[5]))
 
@@ -108,7 +108,6 @@ def create_csv_and_graphics_with_media():
         plt.xticks([0, 100000, 500000, 1000000, 2500000, 5000000, 7500000], rotation='vertical')
         plt.ticklabel_format(axis="x", style="sci", scilimits=(0, 0))
         plt.plot(tamanho_arq[:len(medias)], medias, label=alg)
-        plt.legend()
         plt.savefig("csv_graphics_media/all.png")
 
 
