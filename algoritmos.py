@@ -159,7 +159,9 @@ def intro_sort(a: list):
 
 def tim_sort(a: list) -> None:
     """
-    TimSort é um algoritmo que utiliza o Insertion Sort e o Merge Sort em conjunto
+    TimSort é um algoritmo que utiliza o Insertion Sort e o Merge Sort em conjunto.
+
+    Baseado em https://www.infopulse.com/blog/timsort-sorting-algorithm/
     """
 
     """
